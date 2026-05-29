@@ -10,6 +10,8 @@ fields_*.dat
 
 # Generované obrázky (regenerují se Python skripty)
 *.png
+# …ale statický web (docs/site/) se commituje VČETNĚ svých obrázků
+!docs/site/img/*.png
 
 # Python / uv
 docs/.venv/
