@@ -1,0 +1,16 @@
+[project]
+name = "cfd-cube-docs"
+version = "0.1.0"
+description = "Dokumentace 3D CFD řešiče (kanál + krychle): teorie, C++ implementace, řešič"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "jinja2>=3.1",
+    "markdown>=3.6",
+    "pygments>=2.17",
+]
+
+[tool.uv]
+package = false

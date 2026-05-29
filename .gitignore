@@ -1,0 +1,25 @@
+# Přeložené C++ artefakty
+*.o
+channelCube
+simpleCavity
+
+# Generovaná výstupní data (regenerují se spuštěním řešiče)
+*.vtk
+*.dat
+fields_*.dat
+
+# Generované obrázky (regenerují se Python skripty)
+*.png
+
+# Python / uv
+docs/.venv/
+.venv/
+__pycache__/
+*.pyc
+docs/uv.lock
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

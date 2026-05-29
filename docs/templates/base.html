@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} — CFD Cube docs</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- MathJax pro rovnice -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+  <button id="menu-toggle" aria-label="menu">☰</button>
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo">⬛</span>
+      <div>
+        <strong>CFD Cube</strong>
+        <small>3D kanál + krychle</small>
+      </div>
+    </div>
+    <nav>
+      {% for section, items in nav %}
+      <div class="nav-section">
+        <h4>{{ section }}</h4>
+        <ul>
+          {% for slug, label in items %}
+          <li>
+            <a href="{{ '/' if slug == 'index' else '/page/' + slug }}"
+               class="{{ 'active' if slug == active else '' }}">{{ label }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </nav>
+  </aside>
+
+  <main>
+    <article class="content">
+      {% block content %}{% endblock %}
+    </article>
+  </main>
+  <script src="/static/menu.js"></script>
+</body>
+</html>
