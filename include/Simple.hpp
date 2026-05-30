@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <functional>
 #include "Mesh.hpp"
 #include "Field.hpp"
 #include "CgSolver.hpp"
@@ -31,6 +32,12 @@ struct ChannelSolver {
     std::string matrixExportPathU;   // hybnostni matice
     std::string convergencePath;     // soubor pro zivy zapis rezidui (kazdou iteraci)
     std::vector<int> snapIters;      // iterace, ve kterych ulozit snapshot pole
+
+    // Volitelny callback volany na konci kazde iterace SIMPLE smycky.
+    // Argumenty: (cislo iterace, relativni kontinuitni reziduum).
+    // Navratova hodnota false  => predcasne ukonceni smycky (napr. Stop z GUI).
+    // Pokud neni nastaven, solver se chova presne jako drive (neinvazivni).
+    std::function<bool(int, double)> onIteration;
 
     ChannelSolver(int nx, int ny, int nz,
                   double Lx, double Ly, double Lz,

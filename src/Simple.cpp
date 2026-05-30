@@ -401,6 +401,13 @@ void ChannelSolver::solve()
             std::fflush(stdout);
         }
 
+        // Callback pro GUI (zive updaty + moznost predcasneho ukonceni)
+        if(onIteration && !onIteration(it, cont/contInit)){
+            std::printf("Preruseno uzivatelem v iteraci %d\n", it);
+            std::fflush(stdout);
+            break;
+        }
+
         if(cont/contInit<tol){
             std::printf("Konvergováno v iteraci %d  (rel.res=%.2e)\n",it,cont/contInit);
             if(!matrixExportPath.empty())
